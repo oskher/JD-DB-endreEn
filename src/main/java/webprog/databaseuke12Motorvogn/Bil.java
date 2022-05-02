@@ -62,6 +62,6 @@ public class Bil {
     }
     public int getId(){
         return id; }
-    public void setId(){
+    public void setId(int id){   //       NB! Husk at den tar inn idFraInput her.
         this.id = id; }
 }
