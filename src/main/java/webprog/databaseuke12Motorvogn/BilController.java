@@ -23,16 +23,16 @@ public class BilController {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i database, prøv igjen senere");
         }
 
-        rep.lagreBil(innRandomBil);
+        //rep.lagreBil(innRandomBil);
     }
     @GetMapping("/henteEnMotorvogn")
     public Bil hentEnBil(int id){
-        return rep.hentEnBilar(id);
+        return rep.hentEnBil(id);
     }
 
     @PostMapping("/endreEn")  // Lagrer verdier
     public void endre(Bil innBil){
-        rep.endreEnBilar(innBil);
+        rep.endreEnBil(innBil);
     }
 
     @GetMapping("/printBiler")
@@ -40,7 +40,7 @@ public class BilController {
 
         return rep.hentUt();
     }
-    @GetMapping("/printModell")
+    @GetMapping("/printMerke")
     public List <Modell> printUtM(){
         return rep.hentUtM();
     }

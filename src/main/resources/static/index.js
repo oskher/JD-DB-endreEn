@@ -22,7 +22,7 @@ function henteData(){
                 "<td>" + bil.kjennetegn + "</td>" +
                 "<td>" + bil.bilmerke + "</td>" +
                 "<td>" + bil.biltype + "</td>" +
-                "<td><a href='endre.html' class='btn btn-primary' >Endre</a></td>" +
+                "<td><a href='endre.html?" + bil.id + "' class='btn btn-primary' >Endre</a></td>" +
                 "<td><button class='btn btn-danger' onclick='slettEn(" + bil.id + ")'>Slett</button></td>" +
                 "</tr>";
         }
@@ -30,6 +30,10 @@ function henteData(){
         $("#div1").html(ut);
     });
 }
+
+/*const idTilEndring = () => {
+    window.location.href  = "/endre.html?" + id;          Denne er 2.måte å lage endreknapp. endreknapp må da ha: "<td><button class='btn btn-danger' onclick='idTilEndring(" + bil.id + ")'>Slett</button></td>" +
+}*/
 
 
 function slett() {

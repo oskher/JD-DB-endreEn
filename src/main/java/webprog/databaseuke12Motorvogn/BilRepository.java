@@ -19,12 +19,11 @@ public class BilRepository {
 
     public boolean lagreBil(Bil innBil){ // endre type fra Void til Bolean
         String sql = "INSERT INTO BIL (personnr, navn, adresse, kjennetegn, bilmerke, biltype) VALUES (?, ?, ?, ?, ?, ?)";
-        database.update(sql, innBil.getPersonnr(), innBil.getNavn(), innBil.getAdresse(), innBil.getKjennetegn(),
-                innBil.getBilmerke(), innBil.getBiltype());
+        //database.update(sql, innBil.getPersonnr(), innBil.getNavn(), innBil.getAdresse(), innBil.getKjennetegn(),innBil.getBilmerke(), innBil.getBiltype());
 
         try{
             database.update(sql, innBil.getPersonnr(), innBil.getNavn(), innBil.getAdresse(),
-                    innBil.getKjennetegn(), innBil.getBiltype(), innBil.getBiltype());
+                    innBil.getKjennetegn(), innBil.getBilmerke(), innBil.getBiltype());
             return true;
         } catch(Exception e){
             logger.error("Feil i lagreBil metode: " + e);
@@ -38,13 +37,13 @@ public class BilRepository {
         List<Bil> alleBiler = database.query(sql, new BeanPropertyRowMapper<>(Bil.class)); // row- etter lengden i class=Bil
         return alleBiler;
     }
-    public Bil hentEnBilar(int id){
+    public Bil hentEnBil(int id){
         String sql = "SELECT * FROM Bil WHERE id=?";
         List<Bil> enBil = database.query(sql, new BeanPropertyRowMapper(Bil.class), id);
         return enBil.get(0);   // sender allti første rad = 0 indeks.
     }
 
-    public void endreEnBilar(Bil innBil){
+    public void endreEnBil(Bil innBil){
         String sql ="UPDATE Bil SET personnr=?, navn=?, adresse=?, kjennetegn=?, bilmerke=?, biltype=? WHERE id=?";
         database.update(sql, innBil.getPersonnr(), innBil.getNavn(), innBil.getAdresse(), innBil.getKjennetegn(),
                 innBil.getBilmerke(), innBil.getBiltype());
